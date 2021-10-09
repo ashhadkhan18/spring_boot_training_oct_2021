@@ -23,7 +23,7 @@ public class UnderstandAutoConfigApplication {
 	
 	  System.out.println(ctx.getBean(Customer.class));
 	  
-	  ctx.close();
+	  //ctx.close();
 			
 	}
 
