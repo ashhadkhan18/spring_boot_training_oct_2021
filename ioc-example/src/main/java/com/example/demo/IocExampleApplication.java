@@ -56,13 +56,14 @@ public class IocExampleApplication {
 	   
 	   System.out.println(objRef3);
 	   
-	   System.out.println(ctx.getBean("ambience",Review.class));
+	   //System.out.println(ctx.getBean("ambience",Review.class));
 	   
+	   System.out.println(ctx.getBean("infoDto"));
 	   
 	   
 	   // Look at Server console and observe the message from Constructor is printed only once and not thrice
 	   	   
-	ctx.close();
+	//ctx.close();
 	}
 
 }
