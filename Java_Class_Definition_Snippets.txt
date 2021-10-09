@@ -1,0 +1,139 @@
+@Data
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@AllArgsConstructor()
+@NoArgsConstructor
+==============
+class Item{
+
+long id
+String name
+int quantity
+double price
+}
+====================
+class Order{
+long id
+String status
+Localdate orderDate
+Item item
+}
+
+=========================
+class Payment{
+	
+	private int paymentId;
+	private String orderId;
+	private String userId;
+	private double amount;
+	private String paymentMode;
+	private String status;
+}	
+============================
+
+public class Review {
+
+	@Id
+	private String id;
+	private String title;
+	private String description;
+	private Integer score;
+	private String productId;
+}
+==============================
+
+public class Customer {
+
+private int customerId;
+private String customerName;
+private String email
+
+}
+
+
+public class Product {
+
+private int productId;
+private String productName;
+
+}
+
+public class Invoice {
+private int invoiceNumber
+private Customer customer;
+private Product product;
+
+}
+
+public class InvoiceBook{
+
+private int id;
+private List<Invoice> invoices;
+}
+
+
+public class Reservation {
+	@Id
+	private Long id;
+	private LocalDateTime reservationDate;
+	private Long userId;
+	private int partySize;
+
+}
+public class RestaurantInfo {
+            private int id;
+	    private String name;
+	    private String serviceArea;
+	    private String emailAddress;
+	    private String menuType;
+	    private String openingHours;
+
+}
+
+class Review{
+int id,
+String restaurantName;
+String reviewedBy;
+String reviewAspect;
+String reviewBody;
+int reviewRating;
+
+}
+
+class InfoDTO{
+
+RestaurantInfo  info
+Reviews  reviews
+
+}
+
+
+
+class Comment {
+String user
+String message
+LocalDate dateCreted
+int likes
+}
+public class BlogPost{
+
+int id,
+String postTitle
+String description
+List<Comment> comment
+}
+
+
+class Review{
+int id,
+String itemReviewed,
+String reviewAspect,
+String itemReviewed,
+String reviewBody,
+int reviewRating
+
+}
+
+
+
+
+
