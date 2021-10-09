@@ -19,7 +19,7 @@ public class UnderstandAutoConfigApplication {
 		
 	Banner.Mode mode = Banner.Mode.OFF;
 	ConfigurableApplicationContext	ctx=new SpringApplicationBuilder(UnderstandAutoConfigApplication.class)
-			         .bannerMode(mode).build().run(args);
+			         .bannerMode(mode).properties("server.port:6060").build().run(args);
 	
 	  System.out.println(ctx.getBean(Customer.class));
 	  

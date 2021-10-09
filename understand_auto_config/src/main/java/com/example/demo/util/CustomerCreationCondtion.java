@@ -9,7 +9,11 @@ public class CustomerCreationCondtion implements Condition {
 	@Override
 	public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
 
-		return false;
+		boolean result = context.getBeanFactory().containsBean("tv");
+		
+		return  result;
+		
+		
 	}
 
 }
