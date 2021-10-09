@@ -25,6 +25,7 @@ public class UnderstandAutoConfigApplication {
 	
 	  System.out.println(ctx.getBean(Customer.class));
 	  
+	  System.out.println(ctx.getBean("item",Item.class));
 	  
 	  //ctx.close();
 			
@@ -57,7 +58,7 @@ public class UnderstandAutoConfigApplication {
 	}
 	
 	@Bean
-	public Item tv() {
+	public Item item() {
 		return new Item(101,"tv");
 	}
 	

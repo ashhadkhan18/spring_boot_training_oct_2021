@@ -2,3 +2,5 @@ spring:
   application:
     name: autoconfig
 
+  main:
+    allow-bean-definition-overriding: true
