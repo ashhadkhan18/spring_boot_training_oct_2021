@@ -1,0 +1,10 @@
+server:
+  port: 8080
+custom:
+  property:
+    first: prop_first
+
+spring:
+  application:
+    admin:
+      jmx-name: org.springframework.boot:type=AdminRest,name=SpringFirstApplication
