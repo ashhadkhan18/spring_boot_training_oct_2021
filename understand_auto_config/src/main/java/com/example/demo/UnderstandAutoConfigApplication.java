@@ -9,6 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 
 import com.example.demo.model.Customer;
 import com.example.demo.model.Item;
@@ -23,7 +24,7 @@ public class UnderstandAutoConfigApplication {
 	ConfigurableApplicationContext	ctx=new SpringApplicationBuilder(UnderstandAutoConfigApplication.class)
 			         .bannerMode(mode).properties("server.port:6060").build().run(args);
 	
-	  System.out.println(ctx.getBean(Customer.class));
+	  System.out.println(ctx.getBean("shiv1",Customer.class));
 	  
 	  System.out.println(ctx.getBean("item",Item.class));
 	  
@@ -31,6 +32,24 @@ public class UnderstandAutoConfigApplication {
 			
 	}
 
+	@Bean(initMethod = "init",name = "shiv1")
+	@Profile(value = "dev")
+	public Customer shiv1() {
+		
+		return new Customer(202, "Shiv developer", "shiv@abc.com");
+		
+		
+	}
+	
+	@Bean(initMethod = "init",name = "shiv1")
+	public Customer shiv2() {
+		
+		return new Customer(2022, "ShivJi production", "shivji@abc.com");
+		
+		
+	}
+	
+	
 	@Bean
 	@Conditional(CustomerCreationCondtion.class)
 	public Customer ram() {

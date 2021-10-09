@@ -1,6 +1,27 @@
 spring:
+     
+  config:
+    activate:
+      on-profile:
+      - "dev"   
+      
   application:
-    name: autoconfig
-
+    name: autoconfigure
   main:
     allow-bean-definition-overriding: true
+    
+logging:
+  level:
+    '[org.springframework]': debug               
+---
+spring:
+  config:
+    activate:
+      on-profile:
+      - "prod"    
+  application:
+    name: autoconfigure
+  main:
+    allow-bean-definition-overriding: true
+     
+     
