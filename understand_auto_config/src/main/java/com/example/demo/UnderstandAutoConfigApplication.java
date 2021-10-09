@@ -8,8 +8,10 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
+import org.springframework.context.annotation.Primary;
 
 import com.example.demo.model.Customer;
+import com.example.demo.model.Item;
 import com.example.demo.util.CustomerCreationCondtion;
 
 @SpringBootApplication
@@ -22,6 +24,7 @@ public class UnderstandAutoConfigApplication {
 			         .bannerMode(mode).properties("server.port:6060").build().run(args);
 	
 	  System.out.println(ctx.getBean(Customer.class));
+	  
 	  
 	  //ctx.close();
 			
@@ -53,5 +56,15 @@ public class UnderstandAutoConfigApplication {
 		
 	}
 	
+	@Bean
+	public Item tv() {
+		return new Item(101,"tv");
+	}
+	
+	@Bean
+	@Primary
+	public Item fridge() {
+		return new Item(102,"fridge");
+	}
 	
 }
