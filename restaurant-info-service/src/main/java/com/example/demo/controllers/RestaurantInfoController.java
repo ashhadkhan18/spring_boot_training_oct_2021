@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.services.RestaurantInfoService;
@@ -45,9 +46,9 @@ public class RestaurantInfoController {
 			return this.service.findAll();
 		}
 		
-		@GetMapping(path = "/{id}")
+		@GetMapping("/useParam")
 		@Operation(description = "This method will bring  the Restaurant By its Id ")
-		public RestaurantInfo getById(@Param("id") int id){
+		public RestaurantInfo getById(@RequestParam ("id") int id){
 			
 			return this.service.findById(id);
 		}
@@ -102,7 +103,7 @@ public class RestaurantInfoController {
 
 		}
 		
-		@PatchMapping
+		@PatchMapping("/{id}/{revisedTiming}")
 		public ResponseEntity<String> updateTiming(@PathVariable("id") int id, @PathVariable("revisedTiming") String timing){
 			
 			int rowsUpdated = this.service.updateTiming(id, timing);

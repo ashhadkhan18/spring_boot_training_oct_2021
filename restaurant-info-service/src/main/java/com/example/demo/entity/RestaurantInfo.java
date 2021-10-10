@@ -24,6 +24,7 @@ import lombok.experimental.FieldDefaults;
 @Table(name = "restaurant_info_oct2021")
 public class RestaurantInfo {
 
+	
 	    @Id
 	    @Column(name = "id")
 	    private int id;
