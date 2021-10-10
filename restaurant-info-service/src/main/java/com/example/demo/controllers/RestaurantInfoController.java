@@ -67,8 +67,7 @@ public class RestaurantInfoController {
 		public ResponseEntity<RestaurantInfo>  updateInfo(@RequestBody RestaurantInfo entity){
 			
 			RestaurantInfo addedEntity = this.service.update(entity);
-			
-			
+						
 			return ResponseEntity.status(HttpStatus.OK).body(addedEntity);
 		
 		}
