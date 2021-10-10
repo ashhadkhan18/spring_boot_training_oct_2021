@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import java.util.*;
 
 import com.example.demo.entity.RestaurantInfo;
+import com.example.demo.handlers.ElementNotFoundException;
 import com.example.demo.ifaces.RestaurantInfoRepository;
 
 @Service
@@ -32,7 +33,7 @@ public class RestaurantInfoService {
     public RestaurantInfo findById(int id){
 		
 		return this.repo.findById(id)
-				 .orElseThrow(() -> new RuntimeException("Element with that id not present"));
+				 .orElseThrow(() -> new ElementNotFoundException("Element with that id not present"));
 	}
 		
 	public RestaurantInfo update(RestaurantInfo entity) {

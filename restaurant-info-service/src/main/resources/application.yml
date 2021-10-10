@@ -8,3 +8,11 @@ spring:
     show-sql: true
     
 server:  port: 7075    
+  
+  
+com:
+  example:
+    demo:
+      errorcode:
+        one: Element Not Present in Table  
+  
