@@ -9,7 +9,11 @@ import org.springframework.context.annotation.Bean;
 import com.example.demo.entity.RestaurantInfo;
 import com.example.demo.ifaces.RestaurantInfoRepository;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+
 @SpringBootApplication
+@OpenAPIDefinition(info = @Info(title = "Restaurant Information API",version = "1.0"))
 public class RestaurantInfoServiceApplication {
 
 	public static void main(String[] args) {
