@@ -52,5 +52,17 @@ public class RestaurantInfoService {
 		return result;
 	}
 	
+	public List<RestaurantInfo> findByServiceArea(String area){
+		
+		return this.findByServiceArea(area);
+	}
 	
+	public List<RestaurantInfo> findByMenuType(String type){
+		return this.findByMenuType(type);
+	}
+	
+	public int updateTiming(int id, String revisedTime) {
+		
+		return this.updateTiming(id, revisedTime);
+	}
 }

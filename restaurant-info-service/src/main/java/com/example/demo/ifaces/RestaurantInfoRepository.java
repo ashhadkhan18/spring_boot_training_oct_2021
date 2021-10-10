@@ -18,16 +18,19 @@ public interface RestaurantInfoRepository extends JpaRepository<RestaurantInfo, 
 	
 	List<RestaurantInfo> findByServiceArea(String area);
 	
+	
 	// Query DSL with native query
+	
 	@Query(nativeQuery = true,value = "select * from restaurant_info_oct2021 where menutype=:type")
 	List<RestaurantInfo> findByMealType(@Param("type") String type);
 	
+	
 	// Query DSL with JPQL
 	
-	@Query(value = "update RestaurantInfo set openinghours=:revisedTime")
+	@Query(value = "update RestaurantInfo set openinghours=:revisedTime where id=:id")
 	@Modifying
 	@Transactional
-	int updateTiming(@Param("revisedTime") String revisedTime);
+	int updateTiming(@Param("revisedTime") String revisedTime, @Param("id") int id);
 	
 	
 }
