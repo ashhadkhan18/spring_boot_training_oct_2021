@@ -6,9 +6,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +18,6 @@ import com.example.demo.services.RestaurantInfoService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 import java.util.*;
 import com.example.demo.entity.*;
@@ -46,19 +47,26 @@ public class RestaurantInfoController {
 		
 		@GetMapping(path = "/{id}")
 		@Operation(description = "This method will bring  the Restaurant By its Id ")
-		public RestaurantInfo getById(@PathVariable("id") int id){
+		public RestaurantInfo getById(@Param("id") int id){
 			
 			return this.service.findById(id);
 		}
-		@GetMapping(path = "/srch/{area}")
+		
+		@GetMapping(path = "/srch/area/{area}")
 		public List<RestaurantInfo> getByServiceArea(@PathVariable("area") String area){
 			
 			return this.service.findByServiceArea(area);
 		}
-		
+		@GetMapping(path = "/srch/meal/{type}")
+		public List<RestaurantInfo> getByMeal(@PathVariable("type") String area){
+			
+			return this.service.findByMenuType(area);
+		}
 		
 		@PostMapping
-		public ResponseEntity<RestaurantInfo>  addInfo(@RequestBody RestaurantInfo entity){
+		public ResponseEntity<RestaurantInfo> addInfo(@RequestBody RestaurantInfo entity){
+			
+			System.out.println(entity);
 			
 			RestaurantInfo addedEntity = this.service.add(entity);
 			
@@ -94,5 +102,13 @@ public class RestaurantInfoController {
 
 		}
 		
+		@PatchMapping
+		public ResponseEntity<String> updateTiming(@PathVariable("id") int id, @PathVariable("revisedTiming") String timing){
+			
+			int rowsUpdated = this.service.updateTiming(id, timing);
+			
+			return ResponseEntity.ok(rowsUpdated+" Updated");
+			
+		}
 		
 }
