@@ -54,15 +54,15 @@ public class RestaurantInfoService {
 	
 	public List<RestaurantInfo> findByServiceArea(String area){
 		
-		return this.findByServiceArea(area);
+		return this.repo.findByServiceArea(area);
 	}
 	
 	public List<RestaurantInfo> findByMenuType(String type){
-		return this.findByMenuType(type);
+		return this.repo.findByMealType(type);
 	}
 	
 	public int updateTiming(int id, String revisedTime) {
 		
-		return this.updateTiming(id, revisedTime);
+		return this.repo.updateTiming(revisedTime, id);
 	}
 }
