@@ -50,7 +50,11 @@ public class RestaurantInfoController {
 			
 			return this.service.findById(id);
 		}
-		
+		@GetMapping(path = "/srch/{area}")
+		public List<RestaurantInfo> getByServiceArea(@PathVariable("area") String area){
+			
+			return this.service.findByServiceArea(area);
+		}
 		
 		
 		@PostMapping
