@@ -15,7 +15,7 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import java.util.*;
 import com.example.demo.entity.*;
 @RestController
-@RequestMapping(path = "/api/v1")
+@RequestMapping(path = "/api/v1/restaurants")
 public class RestaurantInfoController {
 	
 	
@@ -30,8 +30,7 @@ public class RestaurantInfoController {
 			super();
 			this.service = service;
 		}
-	
-	
+		
 		@GetMapping
 		public List<RestaurantInfo> getAll(){
 			
