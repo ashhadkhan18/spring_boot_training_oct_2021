@@ -64,7 +64,7 @@ public class RestaurantInfoController {
 			return this.service.findByMenuType(area);
 		}
 		
-		@PostMapping
+		@PostMapping(produces = "application/json", consumes = "appplication/json")
 		public ResponseEntity<RestaurantInfo> addInfo(@RequestBody RestaurantInfo entity){
 			
 			System.out.println(entity);
