@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.hateoas.RepresentationModel;
 import org.springframework.stereotype.Component;
 
 import lombok.AccessLevel;
@@ -22,7 +23,7 @@ import lombok.experimental.FieldDefaults;
 
 @Entity
 @Table(name = "review_2021")
-public class Review {
+public class Review extends RepresentationModel<Review>{
 
 	@Id
 	@Column(name = "id")

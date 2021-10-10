@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.hateoas.RepresentationModel;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -32,7 +33,7 @@ import lombok.experimental.FieldDefaults;
 
 @Entity
 @Table(name = "hotel_info_2021")
-public class RestaurantInfo {
+public class RestaurantInfo  extends RepresentationModel<RestaurantInfo>{
 
 	
 	    @Id
