@@ -5,10 +5,10 @@ spring:
     password: srivatsan
     driver-class-name: com.mysql.cj.jdbc.Driver
       jpa:    hibernate:      ddl-auto: update
-    show-sql: true
-    
+    show-sql: true  application:    name: restaurant-info-service    
 server:  port: 7075    
-  
+
+eureka:  client:    service-url:      defaultZone: http://localhost:8761/eureka  
   
 com:
   example:
