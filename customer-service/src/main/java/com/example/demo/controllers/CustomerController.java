@@ -19,12 +19,14 @@ public class CustomerController {
 	@Value("${server.port}")
 	private String portNumber;
 	
+	@Value("${project.author.name}")
+	private String customerName;
 	
 	@GetMapping(path = "/customers")
 	public Customer getCustomer() {
 		
 		customer.setId(Integer.parseInt(portNumber));
-		customer.setCustomerName("Ramesh");
+		customer.setCustomerName(customerName);
 		
 		return customer;
 	}

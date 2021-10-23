@@ -1,0 +1,10 @@
+server:
+  port: 5054
+  
+spring:  application:    name: customer-service  
+    
+    
+eureka:  client:    service-url:      defaultZone: http://localhost:8761/eureka  
+      
+
+management:  endpoints:    web:      exposure:        include:        - "*"      

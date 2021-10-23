@@ -4,7 +4,7 @@ server:
 spring:  application:    name: customer-client  
     
     
-eureka:  client:    service-url:      defaultZone: http://eureka-peer2:8775/eureka  
+eureka:  client:    service-url:      defaultZone: http://localhost:8761/eureka  
       
 
 management:  endpoints:    web:      exposure:        include:        - "*"      
