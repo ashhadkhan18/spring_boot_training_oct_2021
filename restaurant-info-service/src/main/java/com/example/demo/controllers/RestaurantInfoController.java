@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,12 +15,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.demo.services.RestaurantInfoService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 
+import java.net.URI;
 import java.util.*;
 import com.example.demo.entity.*;
 @RestController
@@ -64,15 +67,16 @@ public class RestaurantInfoController {
 			return this.service.findByMenuType(area);
 		}
 		
-		@PostMapping(produces = "application/json", consumes = "appplication/json")
-		public ResponseEntity<RestaurantInfo> addInfo(@RequestBody RestaurantInfo entity){
+		@PostMapping
+		public ResponseEntity<Object> addInfo(@RequestBody RestaurantInfo entity){
 			
-			System.out.println(entity);
+			 
+
 			
-			RestaurantInfo addedEntity = this.service.add(entity);
-			
-			
-			return ResponseEntity.status(HttpStatus.CREATED).body(addedEntity);
+			URI location=ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(entity.getId()).toUri();  
+
+
+			return ResponseEntity.created(location).body(location);  
 		
 		}
 	
