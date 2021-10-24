@@ -1,6 +1,4 @@
-package com.example.demo.config;
-
-import javax.sql.DataSource;
+package org.training.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,29 +14,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(jsr250Enabled = true)
-public class JdbcSecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	
 	@Autowired
 	BCryptPasswordEncoder encoder;
 	
-	@Autowired
-	private DataSource dataSource;
-	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
-		auth.jdbcAuthentication().dataSource(dataSource)
-        .usersByUsernameQuery(
-                "SELECT username, password, enabled from users where username = ?")
-            .authoritiesByUsernameQuery(
-                "SELECT u.username, a.authority " +
-                "FROM authorities a, users u " +
-                "WHERE u.username = ? " +
-                "AND u.username = a.username"
-            )
-        .passwordEncoder(new BCryptPasswordEncoder());
+		auth.inMemoryAuthentication().withUser("india").password(encoder.encode("india")).roles("ADMIN")
+		            .and().withUser("nepal").password(encoder.encode("nepal")).roles("USER");
 	}
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 	
