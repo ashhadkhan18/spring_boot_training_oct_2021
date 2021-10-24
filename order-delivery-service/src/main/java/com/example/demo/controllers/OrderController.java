@@ -1,9 +1,15 @@
 package com.example.demo.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.endpoint.SecurityContext;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,6 +45,7 @@ public class OrderController {
 
 	
 	@GetMapping
+	@RolesAllowed(value = {"ROLE_ADMIN","ROLE_USER"})
 	public List<Order> findAll(){
 		
 		log.debug("Order Controller Find All Method Called");
@@ -46,7 +53,15 @@ public class OrderController {
 	}
 	
 	@PostMapping
-	public Order addOrder(@RequestBody Order order) {
+	@RolesAllowed(value = {"ROLE_ADMIN"})
+	public Order addOrder(@RequestBody Order order,Principal principal) {
+		
+//		UserDetails user =(UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		
+//		System.out.println("USER IN ROLE :="+user.getUsername());
+		
+		log.info("Current User in ROLE :="+principal.getName());
+		
 		
 		log.debug("Order Controller Add Method Called");
 		return this.service.addOrder(order);
