@@ -9,4 +9,14 @@ server:  port: 6060
   
 logging:  file:    name: e:\\logs\\oct2021.log
     
-          
+management:  endpoint:    health:      show-details: always    shutdown:      enabled: true
+         
+info:
+  build:
+    artificatId: '@project.artifact@'
+    groupId: '@project.groupId@'
+    version: '@project.version@'
+  java:
+      version:@java.version@
+      
+         
