@@ -5,4 +5,8 @@
 5) Create a Class OrderService
 6) Create a Class OrderController
 7) Add the required entries in the classes and interfaces
-7) update the github repository with directory and its entries
+8) update the github repository 
+9) Create a file order-delivery-service/application.yml
+10) Add Entries to the application.yml
+11) Restart the Config Server
+12) Start order-service project
