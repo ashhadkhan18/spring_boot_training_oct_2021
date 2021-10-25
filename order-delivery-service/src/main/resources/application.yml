@@ -1,15 +1,21 @@
+server:
+  port: 6060
+
+
 spring:
   application:
     name: order-delivery-service
   config:
     import: configserver:http://localhost:8888
-      boot:    admin:      client:        url:        - http://localhost:9999
-server:  port: 6060
+  boot:    admin:      client:        url:        - http://localhost:9999
+        instance:
+          metadata:            user.name: guest
+            user.password: guest              
   
 logging:  file:    name: e:\\logs\\oct2021.log
     
 management:  endpoint:    health:      show-details: always    shutdown:      enabled: true
-         
+    
 info:
   build:
     artificatId: '@project.artifact@'
@@ -17,5 +23,11 @@ info:
     version: '@project.version@'
   java:
       version:@java.version@
-      
-         
+
+
+eureka:  client:    fetch-registry: true
+    register-with-eureka: true
+    service-url:      defaultZone: http://localhost:8761/eureka   
+        
+        
+        

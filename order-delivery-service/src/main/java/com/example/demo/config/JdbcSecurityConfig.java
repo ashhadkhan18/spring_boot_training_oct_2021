@@ -44,7 +44,7 @@ public class JdbcSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 		// used while testing with postman
 		http.authorizeRequests().antMatchers("/*.html").permitAll()
-		      .antMatchers("/api/v1/**").authenticated().and().csrf().disable().httpBasic();
+		      .antMatchers("/api/v1/**","/actuator/**").authenticated().and().csrf().disable().httpBasic();
 		
 		// used in a browser environment
 //		http.authorizeRequests().antMatchers("/*.html").permitAll()
