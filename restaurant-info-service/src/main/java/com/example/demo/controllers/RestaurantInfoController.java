@@ -21,12 +21,14 @@ import com.example.demo.services.RestaurantInfoService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import lombok.extern.slf4j.Slf4j;
 
 import java.net.URI;
 import java.util.*;
 import com.example.demo.entity.*;
 @RestController
 @RequestMapping(path = "/api/v1/restaurants")
+@Slf4j
 public class RestaurantInfoController {
 	
 	
