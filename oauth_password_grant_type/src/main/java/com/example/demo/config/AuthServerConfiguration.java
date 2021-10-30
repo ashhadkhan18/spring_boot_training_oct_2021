@@ -1,8 +1,10 @@
 package com.example.demo.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -15,6 +17,9 @@ public class AuthServerConfiguration extends AuthorizationServerConfigurerAdapte
 	
 	@Autowired
 	private AuthenticationManager authManager;
+	
+	@Autowired
+	BCryptPasswordEncoder encoder;
 
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
@@ -27,7 +32,7 @@ public class AuthServerConfiguration extends AuthorizationServerConfigurerAdapte
 
 		clients.inMemory()
 		  .withClient("myclient")
-		    .secret("pass123")
+		    .secret(encoder.encode("pass123"))
 		     .authorizedGrantTypes("password")
 		         .scopes("read","write")
 		            .redirectUris("http://localhost:4040/login/oauth2/code/myclient");
@@ -41,5 +46,10 @@ public class AuthServerConfiguration extends AuthorizationServerConfigurerAdapte
 		 endpoints.authenticationManager(authManager);
 	}
 
-	
+
+	@Bean
+	BCryptPasswordEncoder encoder() {
+		
+		return new BCryptPasswordEncoder();
+	}
 }

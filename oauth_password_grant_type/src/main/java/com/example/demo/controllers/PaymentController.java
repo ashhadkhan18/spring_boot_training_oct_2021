@@ -1,6 +1,11 @@
 package com.example.demo.controllers;
 
+import java.security.Principal;
+
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,15 +24,22 @@ public class PaymentController {
 	Payment payment;
 	
 	@GetMapping
-	public Payment getPayment() {
+	@RolesAllowed(value = {"ROLE_ADMIN","ROLE_USER"})
+	@PreAuthorize(value = "#oauth2.hasScope('read')")
+	public Payment getPayment(Principal principal) {
 		
+		System.out.println("Current User :=" +principal.getName());
 		return payment;
 	}
 	
 	
 	@PostMapping
-	public Payment addPayment(@RequestBody Payment payment) {
+	@RolesAllowed(value = {"ROLE_ADMIN"})
+	@PreAuthorize(value = "#oauth2.hasScope('write')")
+	public Payment addPayment(@RequestBody Payment payment,Principal principal) {
 		
+		System.out.println("Current User :=" +principal.getName());
+
 		return payment;
 	}
 }
