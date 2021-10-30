@@ -9,8 +9,8 @@ spring:
     import: configserver:http://localhost:8888
   boot:    admin:      client:        url:        - http://localhost:9999
         instance:
-          metadata:            user.name: guest
-            user.password: guest              
+          metadata:            '[user.name]': guest
+            '[user.password]': guest              
   
 logging:  file:    name: e:\\logs\\oct2021.log
     
