@@ -16,7 +16,7 @@ public class ProxyFilter implements GlobalFilter {
 
 		boolean result =
 				exchange.getRequest().getURI().
-				        getRawPath().contains("customers");
+				        getRawPath().contains("/api/v1/**");
 				      
 				   if(result) {
 				exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);

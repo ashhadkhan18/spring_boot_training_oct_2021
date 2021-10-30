@@ -2,6 +2,7 @@ package com.example.demo.filters;
 
 import java.util.Set;
 
+import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.http.HttpHeaders;
@@ -11,7 +12,7 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 @Component
-public class MyGlobalFilter implements GlobalFilter {
+public class MyGlobalFilter implements GatewayFilter {
 
 	@Override
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
