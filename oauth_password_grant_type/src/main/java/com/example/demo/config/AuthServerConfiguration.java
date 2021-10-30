@@ -34,7 +34,7 @@ public class AuthServerConfiguration extends AuthorizationServerConfigurerAdapte
 		  .withClient("myclient")
 		    .secret(encoder.encode("pass123"))
 		     .authorizedGrantTypes("password")
-		         .scopes("read","write")
+		         .scopes("read","write","delete")
 		            .redirectUris("http://localhost:4040/login/oauth2/code/myclient");
 		
 	
