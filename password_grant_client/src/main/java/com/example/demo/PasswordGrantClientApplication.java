@@ -25,6 +25,7 @@ public class PasswordGrantClientApplication {
 	@Bean
 	public OAuth2RestTemplate  template() {
 		
+	
 		ResourceOwnerPasswordResourceDetails details = new ResourceOwnerPasswordResourceDetails();
 
 	     details.setAccessTokenUri("http://localhost:4040/oauth/token");

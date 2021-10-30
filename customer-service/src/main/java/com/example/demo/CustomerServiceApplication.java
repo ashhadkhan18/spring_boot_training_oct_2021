@@ -7,8 +7,11 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.demo.model.Customer;
 
+import lombok.extern.slf4j.Slf4j;
+
 @SpringBootApplication
 @EnableDiscoveryClient
+@Slf4j
 public class CustomerServiceApplication {
 
 	public static void main(String[] args) {
@@ -17,7 +20,7 @@ public class CustomerServiceApplication {
 
 	@Bean
 	public Customer ramesh() {
-		
+		log.info("Customer Initialized");
 		return new Customer();
 	}
 }

@@ -7,15 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Customer;
+import com.example.demo.service.CustomerService;
+
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RefreshScope
+@Slf4j
 public class CustomerController {
 
 	
 	
 	@Autowired
-	private Customer customer;
+	private CustomerService service;
 	
 	
 	@Value("${server.port}")
@@ -27,10 +31,10 @@ public class CustomerController {
 	@GetMapping(path = "/customers")
 	public Customer getCustomer() {
 		
-		customer.setId(Integer.parseInt(portNumber));
-		customer.setCustomerName(customerName);
+		log.info("Get Customer Method in the CONTROLLER Called");
 		
-		return customer;
+			
+		return service.getCustomer();
 	}
 	
 }
