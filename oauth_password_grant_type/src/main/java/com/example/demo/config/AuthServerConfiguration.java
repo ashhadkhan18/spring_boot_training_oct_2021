@@ -52,4 +52,6 @@ public class AuthServerConfiguration extends AuthorizationServerConfigurerAdapte
 		
 		return new BCryptPasswordEncoder();
 	}
+	
+	
 }
