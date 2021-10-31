@@ -13,6 +13,5 @@ resilience4j:  circuitbreaker:    instances:      catalogClient:
         
 management:  endpoints:    web:      exposure:        include:        - "*"          endpoint:    health:      show-details: always
     circuitbreakers:      enabled: true
-      
-       
+        health:    circuitbreakers:      enabled: true
         
