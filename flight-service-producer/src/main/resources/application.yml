@@ -1,5 +1,5 @@
 server:
   port: 7070
 
-spring:  cloud:    stream:      bindings:        flightData:
+spring:  cloud:    stream:      bindings:        output:
           destination: topic_6e

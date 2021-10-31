@@ -6,6 +6,6 @@ import org.springframework.messaging.SubscribableChannel;
 public interface MySink {
 
 	@Input("topic_6e")
-	SubscribableChannel subscriber();
+	SubscribableChannel input();
 	
 }
