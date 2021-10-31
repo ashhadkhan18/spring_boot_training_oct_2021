@@ -1,0 +1,12 @@
+server:
+  port: 4242
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: 3859625a090362040b64
+            client-secret: 2fff1aeda9834e99a46ddb4580cf415c29309aee
+            scope:
+            - "['read','write']"

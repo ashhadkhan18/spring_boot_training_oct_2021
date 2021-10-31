@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.demo.model.Customer;
 
+import brave.baggage.BaggagePropagation;
 import lombok.extern.slf4j.Slf4j;
 
 @SpringBootApplication
@@ -23,4 +24,6 @@ public class CustomerServiceApplication {
 		log.info("Customer Initialized");
 		return new Customer();
 	}
+	
+	
 }

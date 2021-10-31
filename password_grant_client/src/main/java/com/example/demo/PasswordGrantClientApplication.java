@@ -14,10 +14,6 @@ public class PasswordGrantClientApplication {
 		
 	ConfigurableApplicationContext ctx =	 SpringApplication.run(PasswordGrantClientApplication.class, args);
 		
-	OAuth2RestTemplate template =     ctx.getBean(OAuth2RestTemplate.class);
-	        
-	
-	    System.out.println(template.getForObject("http://localhost:4040/api/v1/payments", String.class));
 	    
 		
 	}
