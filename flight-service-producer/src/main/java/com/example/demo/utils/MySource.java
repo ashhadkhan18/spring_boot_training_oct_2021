@@ -7,4 +7,8 @@ public interface MySource {
 
 	@Output("topic_6e")
 	MessageChannel details();
+	
+	@Output("topic_ai")
+	MessageChannel aidetails();
+	
 }

@@ -15,7 +15,14 @@ public class FlightService {
 	@Qualifier("topic_6e")
 	private MessageChannel channel;
 	
+	
+	@Autowired
+	@Qualifier("topic_ai")
+	private MessageChannel channel2;
+	
 	public boolean send(Flight flight) {
+		
+		
 		
 		
 		return channel.send(MessageBuilder.withPayload(flight).build());
